@@ -6,10 +6,6 @@ import example.jemin.demo.user.domain.User
 import org.springframework.stereotype.Service
 
 @Service
-class UserService(
-    private val userPort: UserPort
-) : UserUseCase {
-    override fun getUser(id: Long): User {
-        return userPort.findUser(id) ?: throw RuntimeException("User not found")
-    }
+class UserService(private val userPort: UserPort) : UserUseCase {
+    override fun getUser(id: Long): User = userPort.findUser(id) ?: throw RuntimeException("User not found")
 }

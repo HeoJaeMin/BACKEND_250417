@@ -12,8 +12,7 @@ class ExceptionHandler {
 
     @ExceptionHandler(RuntimeException::class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    internal fun handleRuntimeException(e: RuntimeException): ResponseEntity<ErrorResponse> {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+    internal fun handleRuntimeException(e: RuntimeException): ResponseEntity<ErrorResponse> =
+        ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ErrorResponse(message = e.message ?: "Internal Server Error"))
-    }
 }
