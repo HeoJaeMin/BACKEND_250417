@@ -7,5 +7,6 @@ interface UserPort {
 
     fun delete(user: User)
 
-    fun findUser(id: Long): User?
+    fun findById(id: Long): User?
+    fun checkEmailDuplicate(email: String): Boolean
 }

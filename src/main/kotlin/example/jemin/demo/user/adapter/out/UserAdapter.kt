@@ -15,9 +15,10 @@ class UserAdapter(private val userRepository: UserRepository) : UserPort {
         ).toDomain()
 
     override fun delete(user: User) {
-        val user = userRepository.findById(user.id!!).orElseThrow()
-        userRepository.delete(user)
+        val exist = userRepository.findById(user.id!!).orElseThrow()
+        userRepository.delete(exist)
     }
 
-    override fun findUser(id: Long) = userRepository.findById(id).getOrNull()?.toDomain()
+    override fun findById(id: Long) = userRepository.findById(id).getOrNull()?.toDomain()
+    override fun checkEmailDuplicate(email: String) = userRepository.findByEmail(email).isPresent
 }
