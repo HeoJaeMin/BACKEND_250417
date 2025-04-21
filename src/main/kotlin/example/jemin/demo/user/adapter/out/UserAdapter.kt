@@ -22,5 +22,5 @@ class UserAdapter(private val userRepository: UserRepository) : UserPort {
 
     override fun findById(id: Long) = userRepository.findById(id).getOrNull()?.toDomain()
     override fun checkDuplicate(duplicateCheckCommand: DuplicateCheckCommand): Boolean =
-        userRepository.findByEmailOrNickName(duplicateCheckCommand.email, duplicateCheckCommand.nickName).isEmpty
+        userRepository.findByEmailOrNickName(duplicateCheckCommand.email, duplicateCheckCommand.nickName).isPresent
 }

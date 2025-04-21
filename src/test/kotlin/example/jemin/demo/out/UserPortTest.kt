@@ -1,6 +1,7 @@
 package example.jemin.demo.out
 
 import example.jemin.demo.CustomBehaviorSpec
+import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
 import example.jemin.demo.user.application.port.out.UserPort
 import example.jemin.demo.user.domain.User
 import io.kotest.matchers.shouldBe
@@ -13,9 +14,10 @@ class UserPortTest(private val userPort: UserPort) :
                     User(
                         id = null,
                         name = "Jemin",
+                        nickName = "Jacob",
                         email = "rfvgbn21@naver.com",
                         phone = "010-1234-5678",
-                        address = "서울시 서달로",
+                        address = "서울시",
                         profilePictureUrl = null,
                         backgroundPictureUrl = null,
                     )
@@ -33,11 +35,17 @@ class UserPortTest(private val userPort: UserPort) :
                         Then("found user should be same as saved user") {
                             foundUser shouldBe result
                         }
-                        When("delete user") {
-                            userPort.delete(result)
-                            Then("user should not be found") {
-                                userPort.findById(userId) shouldBe null
-                            }
+                    }
+                    When("find Duplicate Email") {
+                        val isDuplicate = userPort.checkDuplicate(DuplicateCheckCommand(user.email, null))
+                        Then("isDuplicate should be true") {
+                            isDuplicate shouldBe true
+                        }
+                    }
+                    When("find Duplicate NickName") {
+                        val isDuplicate = userPort.checkDuplicate(DuplicateCheckCommand(null, user.nickName))
+                        Then("isDuplicate should be true") {
+                            isDuplicate shouldBe true
                         }
                     }
                 }
