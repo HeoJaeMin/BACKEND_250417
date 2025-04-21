@@ -1,5 +1,6 @@
 package example.jemin.demo.user.application.port.out
 
+import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
 import example.jemin.demo.user.domain.User
 
 interface UserPort {
@@ -8,5 +9,5 @@ interface UserPort {
     fun delete(user: User)
 
     fun findById(id: Long): User?
-    fun checkEmailDuplicate(email: String): Boolean
+    fun checkDuplicate(duplicateCheckCommand: DuplicateCheckCommand): Boolean
 }

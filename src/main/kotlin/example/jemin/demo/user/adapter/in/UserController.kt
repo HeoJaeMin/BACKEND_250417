@@ -5,7 +5,7 @@ import example.jemin.demo.user.adapter.`in`.request.UserAddRequest
 import example.jemin.demo.user.adapter.`in`.response.DuplicateCheckResponse
 import example.jemin.demo.user.adapter.`in`.response.UserResponse
 import example.jemin.demo.user.application.port.`in`.UserUseCase
-import example.jemin.demo.user.application.port.`in`.command.EmailDuplicateCheckCommand
+import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
 import example.jemin.demo.user.application.port.`in`.command.UserSearchCommand
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -35,17 +35,38 @@ class UserController(
             ),
         )
 
-    @GetMapping
+    @GetMapping("/email/check")
     fun checkEmailDuplicate(
         @RequestParam("email") email: String,
     ): ResponseEntity<CommonResponse<DuplicateCheckResponse>> =
         ResponseEntity.ok(
             CommonResponse(
                 DuplicateCheckResponse(
-                    userUseCase.checkEmailDuplicate(EmailDuplicateCheckCommand(email)),
+                    userUseCase.checkEmailDuplicate(
+                        DuplicateCheckCommand(
+                            email = email,
+                            nickName = null,
+                        ),
+                    ),
                 ),
             ),
         )
+
+    @GetMapping("/nickName/check")
+    fun checkNickNameDuplicate(
+        @RequestParam("nickName") nickName: String,
+    ): ResponseEntity<CommonResponse<DuplicateCheckResponse>> = ResponseEntity.ok(
+        CommonResponse(
+            DuplicateCheckResponse(
+                userUseCase.checkEmailDuplicate(
+                    DuplicateCheckCommand(
+                        email = null,
+                        nickName = nickName,
+                    ),
+                ),
+            ),
+        ),
+    )
 
     @PostMapping
     fun addUser(

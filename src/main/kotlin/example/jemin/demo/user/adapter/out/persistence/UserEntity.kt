@@ -8,15 +8,21 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import jakarta.persistence.UniqueConstraint
 
 @Entity
-@Table(name = "\"user\"")
+@Table(
+    name = "\"user\"",
+    uniqueConstraints = [UniqueConstraint(columnNames = ["email"]), UniqueConstraint(columnNames = ["nickName"])],
+)
 data class UserEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
     @Column(name = "name", nullable = false)
     val name: String,
+    @Column(name = "nick_name", nullable = false)
+    val nickName: String,
     @Column(name = "email", nullable = false)
     val email: String,
     @Column(name = "phone", nullable = false)
@@ -31,6 +37,7 @@ data class UserEntity(
     constructor(user: User) : this(
         id = user.id,
         name = user.name,
+        nickName = user.nickName,
         email = user.email,
         phone = user.phone,
         address = user.address,
@@ -41,6 +48,7 @@ data class UserEntity(
     fun toDomain() = User(
         id = id,
         name = name,
+        nickName = nickName,
         email = email,
         phone = phone,
         address = address,

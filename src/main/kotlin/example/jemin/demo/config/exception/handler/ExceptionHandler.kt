@@ -1,6 +1,7 @@
 package example.jemin.demo.config.exception.handler
 
 import example.jemin.demo.common.ErrorResponse
+import example.jemin.demo.config.exception.error.unit.BadRequestError
 import example.jemin.demo.config.exception.error.unit.NotFoundError
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -27,9 +28,9 @@ class ExceptionHandler {
             ),
         )
 
-    @ExceptionHandler(RuntimeException::class)
+    @ExceptionHandler(BadRequestError::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    internal fun handleBadRequest(e: RuntimeException): ResponseEntity<ErrorResponse> =
+    internal fun handleBadRequest(e: BadRequestError): ResponseEntity<ErrorResponse> =
         ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
             ErrorResponse(
                 message = e.message ?: "Bad Request",

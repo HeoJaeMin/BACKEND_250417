@@ -3,7 +3,7 @@ package example.jemin.demo.user.application.service
 import example.jemin.demo.common.ErrorDetail
 import example.jemin.demo.config.exception.error.extend.UserNotFoundError
 import example.jemin.demo.user.application.port.`in`.UserUseCase
-import example.jemin.demo.user.application.port.`in`.command.EmailDuplicateCheckCommand
+import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
 import example.jemin.demo.user.application.port.`in`.command.UserSaveCommand
 import example.jemin.demo.user.application.port.`in`.command.UserSearchCommand
 import example.jemin.demo.user.application.port.out.UserPort
@@ -22,8 +22,8 @@ class UserService(private val userPort: UserPort) : UserUseCase {
             ),
         )
 
-    override fun checkEmailDuplicate(emailDuplicateCheckCommand: EmailDuplicateCheckCommand): Boolean =
-        userPort.checkEmailDuplicate(emailDuplicateCheckCommand.email)
+    override fun checkEmailDuplicate(duplicateCheckCommand: DuplicateCheckCommand): Boolean =
+        userPort.checkDuplicate(duplicateCheckCommand)
 
     override fun saveUser(userSaveCommand: UserSaveCommand): User = userPort.save(userSaveCommand.toDomain())
 }

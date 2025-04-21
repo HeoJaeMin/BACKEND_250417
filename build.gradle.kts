@@ -22,6 +22,7 @@ repositories {
 val jdslVersion = "3.5.0"
 val kotestVersion = "5.8.1"
 val kotestExtensionVersion = "1.3.0"
+val springdocVersion = "2.6.0"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -32,6 +33,7 @@ dependencies {
     implementation("com.linecorp.kotlin-jdsl:jpql-dsl:$jdslVersion")
     implementation("com.linecorp.kotlin-jdsl:jpql-render:$jdslVersion")
     implementation("com.linecorp.kotlin-jdsl:spring-data-jpa-support:$jdslVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
     runtimeOnly("com.h2database:h2")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")

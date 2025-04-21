@@ -4,6 +4,7 @@ import example.jemin.demo.user.application.port.`in`.command.UserSaveCommand
 
 data class UserAddRequest(
     val name: String,
+    val nickName: String,
     val email: String,
     val phone: String,
     val address: String?,
@@ -11,6 +12,7 @@ data class UserAddRequest(
     fun toCommand() = UserSaveCommand(
         id = null,
         name = name,
+        nickName = nickName,
         email = email,
         phone = phone,
         address = address,
