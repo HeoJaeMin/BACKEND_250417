@@ -21,7 +21,6 @@ class UserPortTest(private val userPort: UserPort) :
                         profilePictureUrl = null,
                         backgroundPictureUrl = null,
                     )
-
                 When("save user") {
                     val result = userPort.save(user)
                     val userId = result.id
@@ -46,6 +45,12 @@ class UserPortTest(private val userPort: UserPort) :
                         val isDuplicate = userPort.checkDuplicate(DuplicateCheckCommand(null, user.nickName))
                         Then("isDuplicate should be true") {
                             isDuplicate shouldBe true
+                        }
+                    }
+                    When("delete user") {
+                        userPort.delete(result)
+                        Then("user should not be found") {
+                            userPort.findById(userId!!) shouldBe null
                         }
                     }
                 }
