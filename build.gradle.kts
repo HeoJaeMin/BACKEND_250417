@@ -22,7 +22,7 @@ repositories {
 val jdslVersion = "3.5.0"
 val kotestVersion = "5.8.1"
 val kotestExtensionVersion = "1.3.0"
-val springdocVersion = "2.6.0"
+val springdocVersion = "2.8.6"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
