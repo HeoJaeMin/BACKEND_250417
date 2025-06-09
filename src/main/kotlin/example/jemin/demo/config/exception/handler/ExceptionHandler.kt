@@ -49,6 +49,7 @@ class ExceptionHandler {
         ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
             ErrorResponse(
                 message = e.message ?: "Bad Request",
+                details = e.errorDetail,
             ),
         )
 }

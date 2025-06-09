@@ -1,6 +1,7 @@
 package example.jemin.demo.user.application.service
 
 import example.jemin.demo.common.ErrorDetail
+import example.jemin.demo.config.exception.error.extend.UserDuplicateError
 import example.jemin.demo.config.exception.error.extend.UserNotFoundError
 import example.jemin.demo.user.application.port.`in`.UserUseCase
 import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
@@ -26,7 +27,43 @@ class UserService(private val userPort: UserPort) : UserUseCase {
     override fun checkEmailDuplicate(duplicateCheckCommand: DuplicateCheckCommand): Boolean =
         userPort.checkDuplicate(duplicateCheckCommand)
 
-    override fun saveUser(userSaveCommand: UserSaveCommand): User = userPort.save(userSaveCommand.toDomain())
+    override fun saveUser(userSaveCommand: UserSaveCommand): User {
+        if (userPort.checkDuplicate(
+                DuplicateCheckCommand(
+                    email = userSaveCommand.email,
+                    nickName = null,
+                ),
+            )
+        ) {
+            throw UserDuplicateError(
+                errorDetail = listOf(
+                    ErrorDetail(
+                        reason = "Email already in use",
+                        message = userSaveCommand.email,
+                    ),
+                ),
+            )
+        }
+
+        if (userPort.checkDuplicate(
+                DuplicateCheckCommand(
+                    email = null,
+                    nickName = userSaveCommand.nickName,
+                ),
+            )
+        ) {
+            throw UserDuplicateError(
+                errorDetail = listOf(
+                    ErrorDetail(
+                        reason = "NickName already in use",
+                        message = userSaveCommand.nickName,
+                    ),
+                ),
+            )
+        }
+        return userPort.save(userSaveCommand.toDomain())
+    }
+
     override fun getAllUsers(multipleUserSearchCommand: MultipleUserSearchCommand): List<User> =
         userPort.findAll(multipleUserSearchCommand)
 }
