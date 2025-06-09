@@ -45,6 +45,11 @@ class ExceptionHandler {
 
     @ExceptionHandler(BadRequestError::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ApiResponses(
+        value = [
+            ApiResponse(responseCode = "400", description = "Bad Request"),
+        ],
+    )
     internal fun handleBadRequest(e: BadRequestError): ResponseEntity<ErrorResponse> =
         ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
             ErrorResponse(
