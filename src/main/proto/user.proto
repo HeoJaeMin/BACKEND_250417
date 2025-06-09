@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_package = "example.jemin.demo";
+option java_outer_classname = "userProto";
+
+service UserGrpcAdapter{
+  rpc getUser (UserRequest) returns (UserListResponse);
+}
+
+message UserRequest{
+  optional string name = 1;
+  optional string nickName = 2;
+  optional string email = 3;
+  optional string phone = 4;
+  optional string address = 5;
+}
+
+message UserResponse{
+  string name = 1;
+  string nickName = 2;
+  string email = 3;
+  string phone = 4;
+  string address = 5;
+  string profilePictureUrl = 6;
+  string backgroundPictureUrl = 7;
+}
+
+message UserListResponse{
+  repeated UserResponse responses = 1;
+}

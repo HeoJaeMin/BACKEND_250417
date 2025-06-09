@@ -6,7 +6,7 @@ import example.jemin.demo.user.adapter.`in`.response.DuplicateCheckResponse
 import example.jemin.demo.user.adapter.`in`.response.UserResponse
 import example.jemin.demo.user.application.port.`in`.UserUseCase
 import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
-import example.jemin.demo.user.application.port.`in`.command.UserSearchCommand
+import example.jemin.demo.user.application.port.`in`.command.SingleUserSearchCommand
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
@@ -43,7 +43,7 @@ class UserController(
             CommonResponse(
                 UserResponse(
                     userUseCase.getUser(
-                        UserSearchCommand(id),
+                        SingleUserSearchCommand(id),
                     ),
                 ),
             ),

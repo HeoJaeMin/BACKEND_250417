@@ -3,6 +3,7 @@ package example.jemin.demo.user.adapter.out
 import example.jemin.demo.user.adapter.out.persistence.UserEntity
 import example.jemin.demo.user.adapter.out.persistence.UserRepository
 import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
+import example.jemin.demo.user.application.port.`in`.command.MultipleUserSearchCommand
 import example.jemin.demo.user.application.port.out.UserPort
 import example.jemin.demo.user.domain.User
 import org.springframework.stereotype.Component
@@ -23,4 +24,7 @@ class UserAdapter(private val userRepository: UserRepository) : UserPort {
     override fun findById(id: Long) = userRepository.findById(id).getOrNull()?.toDomain()
     override fun checkDuplicate(duplicateCheckCommand: DuplicateCheckCommand): Boolean =
         userRepository.findByEmailOrNickName(duplicateCheckCommand.email, duplicateCheckCommand.nickName).isPresent
+
+    override fun findAll(multipleUserSearchCommand: MultipleUserSearchCommand): List<User> =
+        userRepository.findAll().map { it.toDomain() }
 }
