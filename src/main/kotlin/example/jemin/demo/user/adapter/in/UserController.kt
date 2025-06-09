@@ -1,6 +1,6 @@
 package example.jemin.demo.user.adapter.`in`
 
-import example.jemin.demo.common.CommonResponse
+import example.jemin.demo.common.response.CommonResponse
 import example.jemin.demo.user.adapter.`in`.request.UserAddRequest
 import example.jemin.demo.user.adapter.`in`.response.DuplicateCheckResponse
 import example.jemin.demo.user.adapter.`in`.response.UserResponse

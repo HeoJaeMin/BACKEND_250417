@@ -1,6 +1,6 @@
-package example.jemin.demo.config.exception.error.unit
+package example.jemin.demo.common.config.exception.error.unit
 
-import example.jemin.demo.common.ErrorDetail
+import example.jemin.demo.common.response.ErrorDetail
 
 open class NotFoundError(
     notFoundIs: String,

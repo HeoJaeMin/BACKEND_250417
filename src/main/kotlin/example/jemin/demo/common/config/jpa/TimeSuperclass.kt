@@ -1,4 +1,4 @@
-package example.jemin.demo.config.jpa
+package example.jemin.demo.common.config.jpa
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners

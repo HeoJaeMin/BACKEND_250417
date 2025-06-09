@@ -1,8 +1,8 @@
 package example.jemin.demo.user.application.service
 
-import example.jemin.demo.common.ErrorDetail
-import example.jemin.demo.config.exception.error.extend.UserDuplicateError
-import example.jemin.demo.config.exception.error.extend.UserNotFoundError
+import example.jemin.demo.common.config.exception.error.extend.UserDuplicateError
+import example.jemin.demo.common.config.exception.error.extend.UserNotFoundError
+import example.jemin.demo.common.response.ErrorDetail
 import example.jemin.demo.user.application.port.`in`.UserUseCase
 import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
 import example.jemin.demo.user.application.port.`in`.command.MultipleUserSearchCommand

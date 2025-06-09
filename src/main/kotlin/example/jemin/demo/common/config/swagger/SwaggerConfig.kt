@@ -1,4 +1,4 @@
-package example.jemin.demo.config.swagger
+package example.jemin.demo.common.config.swagger
 
 import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI

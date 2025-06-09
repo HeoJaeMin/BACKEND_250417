@@ -1,4 +1,4 @@
-package example.jemin.demo.common
+package example.jemin.demo.common.response
 
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable

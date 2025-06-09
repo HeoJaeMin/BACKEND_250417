@@ -1,7 +1,7 @@
 package example.jemin.demo.user.adapter.out.persistence.impl
 
 import com.linecorp.kotlinjdsl.support.spring.data.jpa.repository.KotlinJdslJpqlExecutor
-import example.jemin.demo.extend.toPredicate
+import example.jemin.demo.common.extend.toPredicate
 import example.jemin.demo.user.adapter.out.persistence.UserEntity
 import example.jemin.demo.user.adapter.out.persistence.UserJdslRepository
 import example.jemin.demo.user.application.port.`in`.command.MultipleUserSearchCommand

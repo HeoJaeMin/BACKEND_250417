@@ -1,4 +1,4 @@
-package example.jemin.demo.extend
+package example.jemin.demo.common.extend
 
 import com.linecorp.kotlinjdsl.querymodel.jpql.expression.Expressions
 import com.linecorp.kotlinjdsl.querymodel.jpql.path.Path

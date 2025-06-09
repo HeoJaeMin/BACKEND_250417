@@ -1,8 +1,8 @@
-package example.jemin.demo.config.exception.handler
+package example.jemin.demo.common.config.exception.handler
 
-import example.jemin.demo.common.ErrorResponse
-import example.jemin.demo.config.exception.error.unit.BadRequestError
-import example.jemin.demo.config.exception.error.unit.NotFoundError
+import example.jemin.demo.common.config.exception.error.unit.BadRequestError
+import example.jemin.demo.common.config.exception.error.unit.NotFoundError
+import example.jemin.demo.common.response.ErrorResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses

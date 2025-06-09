@@ -1,7 +1,7 @@
-package example.jemin.demo.config.exception.error.extend
+package example.jemin.demo.common.config.exception.error.extend
 
-import example.jemin.demo.common.ErrorDetail
-import example.jemin.demo.config.exception.error.unit.NotFoundError
+import example.jemin.demo.common.config.exception.error.unit.NotFoundError
+import example.jemin.demo.common.response.ErrorDetail
 
 class UserNotFoundError(
     override val cause: Throwable? = null,

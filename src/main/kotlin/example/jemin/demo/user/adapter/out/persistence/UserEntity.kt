@@ -1,6 +1,6 @@
 package example.jemin.demo.user.adapter.out.persistence
 
-import example.jemin.demo.config.jpa.TimeSuperclass
+import example.jemin.demo.common.config.jpa.TimeSuperclass
 import example.jemin.demo.user.domain.User
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
