@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option java_package = "example.jemin.demo";
+option java_package = "example.jemin.demo.modules.user";
 option java_outer_classname = "userProto";
 
 service UserGrpcAdapter{

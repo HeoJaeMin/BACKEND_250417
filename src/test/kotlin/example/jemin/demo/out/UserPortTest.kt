@@ -1,9 +1,9 @@
 package example.jemin.demo.out
 
 import example.jemin.demo.CustomBehaviorSpec
-import example.jemin.demo.user.application.port.`in`.command.DuplicateCheckCommand
-import example.jemin.demo.user.application.port.out.UserPort
-import example.jemin.demo.user.domain.User
+import example.jemin.demo.modules.user.application.port.`in`.command.DuplicateCheckCommand
+import example.jemin.demo.modules.user.application.port.out.UserPort
+import example.jemin.demo.modules.user.domain.User
 import io.kotest.matchers.shouldBe
 
 class UserPortTest(private val userPort: UserPort) :
