@@ -12,12 +12,12 @@ import kotlin.jvm.optionals.getOrNull
 @Component
 class UserAdapter(private val userRepository: UserRepository) : UserPort {
     override fun save(user: User): User = userRepository
-        .save(
-            UserEntity(user),
-        ).toDomain()
+        .save(UserEntity(user)).toDomain()
 
     override fun delete(user: User) {
-        val exist = userRepository.findById(user.id!!).orElseThrow()
+        val exist = userRepository.findById(user.id!!).orElseThrow {
+            throw RuntimeException()
+        }
         userRepository.delete(exist)
     }
 
@@ -26,5 +26,5 @@ class UserAdapter(private val userRepository: UserRepository) : UserPort {
         userRepository.findByEmailOrNickName(duplicateCheckCommand.email, duplicateCheckCommand.nickName).isPresent
 
     override fun findAll(multipleUserSearchCommand: MultipleUserSearchCommand): List<User> =
-        userRepository.findAll().map { it.toDomain() }
+        userRepository.findByCommand(multipleUserSearchCommand).map { it.toDomain() }
 }
